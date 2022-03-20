@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github/lingliy/paxos/basic";
+
+service Basic {
+	rpc Prepare(Request) returns (Response) {}
+	rpc Accept(Response2) returns (Request) {}
+}
+
+message Request {
+	uint64 id = 2;
+}
+
+message Response {
+	uint64 id = 1;
+	int64 state = 2;
+	uint64 last_id = 3;
+}
+
+message Response2 {
+	uint64 id = 1;
+	int64 state = 2;
+}
